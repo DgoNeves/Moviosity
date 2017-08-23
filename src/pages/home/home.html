@@ -1,18 +1,36 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Welcome to Movieosity</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
 
+<ion-content>
+
+  <ion-card>
+    <ion-card-header class="my-header">
+        No followed channels yet!
+    </ion-card-header>
+
+    <ion-card-content>
+      <p> To follow a Channel mark the star icon. </p>
+      <p> You can unfollow at any given time. </p>
+      <p> </p>
+        <button icon-left ion-button color="primary" full (click)="goToChannels()">
+          <ion-icon name="search"></ion-icon>
+           Select a Channel
+        </button>
+    </ion-card-content>
+  </ion-card>
+<!--
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    Hi there! M8
   </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  
+  <button ion-button secondary>See all available Movies</button> -->
+
 </ion-content>

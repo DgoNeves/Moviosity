@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Select a Channel</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button *ngFor="let channel of channels" ion-item (click)="GetMovies($event,channel)">
+      {{channel.name}}
+    </button>
+
+  </ion-list>
+</ion-content>
