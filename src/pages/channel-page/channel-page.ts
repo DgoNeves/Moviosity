@@ -26,4 +26,10 @@ export class ChannelPage {
     this.nav.push(MovieListPage , channel);
   }
 
+
+  goHome()
+  {
+    this.nav.popToRoot();
+  }
+
 }

@@ -1,8 +1,15 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+      <ion-buttons end>
+          <button round ion-button color="light" icon-only (click)="goHome()">
+              <ion-icon name="home"></ion-icon>
+          </button>
+     
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        
+  </ion-buttons>
     <ion-title>Select a Channel</ion-title>
   </ion-navbar>
 </ion-header>
