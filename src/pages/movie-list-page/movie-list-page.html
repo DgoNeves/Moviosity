@@ -9,18 +9,25 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <ion-card>
     
         <ion-item>
-             <ion-label color="primary" > <b>Filter By Date:</b></ion-label>
-            <ion-datetime displayFormat="DDDD , D" pickerFormat="DDD/MMM/YYYY" ></ion-datetime>
+             <ion-label  color="primary" > <b>Filter By Date:</b></ion-label>
+             <ion-toggle [(ngModel)]="useDateFilter" (ionChange)="dateChanged()"></ion-toggle>
+            <ion-datetime displayFormat="DDDD , D" pickerFormat="DD/MMM/YYYY"
+             [(ngModel)]="dateFilter" (ionChange)="dateChanged()"
+             [(disabled)]="!useDateFilter"></ion-datetime>
+
         </ion-item>
 
     </ion-card>
 
-    <ion-card *ngFor="let movie of movies">
-        <ion-card-header color="secondary">{{movie.Title}}</ion-card-header>
+    <ion-card outline *ngFor="let movie of movies">
+        <button icon-right ion-button outline full round color="secondary">
+                <b> {{movie.Title}} </b>
+                <ion-icon name="arrow-round-forward"></ion-icon>
+        </button>
         <ion-row>
             <ion-col>Start: {{movie.StartTime | date:'shortTime'}}</ion-col>
             <ion-col>End: {{movie.EndTime | date:'shortTime'}}</ion-col>
