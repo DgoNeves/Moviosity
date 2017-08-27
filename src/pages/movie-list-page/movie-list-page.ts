@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController , NavParams } from 'ionic-angular';
+import { LoadingController, NavController , NavParams } from 'ionic-angular';
+import { ChannelApi  } from '../../shared/shared';
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
@@ -12,29 +13,45 @@ import * as moment from 'moment';
 export class MovieListPage {
 
   dateFilter: string;
-  movies = [
-    { Title: 'Test 1' , StartTime: '2017-08-23' , EndTime: '2017-08-23 23:10:00' },
-    { Title: 'Test 2' , StartTime: '2017-08-24' , EndTime: '2017-08-24 23:10:00' },
-    { Title: 'Test 3' , StartTime: '2017-08-26' , EndTime: '2017-08-25 23:10:00' },
-    { Title: 'Test 4' , StartTime: '2017-09-26' , EndTime: '2017-08-25 23:10:00' },
-  ];
+  movies: any;
 
-  allMovies: any[];
+  allMovies: any;
   channel: any;
   useDateFilter = false;
 
   constructor(
     private navCtrl: NavController , 
-    private navParams: NavParams) {  } 
+    private navParams: NavParams,
+    private channelApi: ChannelApi,
+    private load: LoadingController) {  } 
 
 
     ionViewCanEnter(){
-      this.channel = this.navParams.data;
-      this.allMovies = this.movies;
+        this.channel = this.navParams.data;
     }
 
   ionViewDidLoad(){
     
+    let loader = this.load.create({
+      content: '<b> Loading Channel Data... </b>'
+    });
+    
+    loader.present().then(() =>{
+      if(this.allMovies == undefined){
+
+        this.channelApi.getChannelInfo(this.channel.sigla)
+        .then(data => this.allMovies = data)
+        .then(data => this.movies = data)
+        .then(x => loader.dismiss())
+        .catch(x => {loader.dismiss(); console.log(x)});
+      }
+      else
+      {
+        loader.dismiss();
+      }
+
+    });
+
   }
 
   dateChanged(){

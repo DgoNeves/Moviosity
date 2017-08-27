@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { ListPage } from '../pages/list/list';
 import { Http, HttpModule } from '@angular/http';
 
+import { ChannelApi } from  '../shared/shared';
 import { ChannelPage ,HomePage , MovieDetailsPage , MovieListPage } from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,6 +23,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -36,6 +38,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    HttpModule,
+    ChannelApi,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

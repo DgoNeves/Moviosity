@@ -25,12 +25,12 @@
 
     <ion-card outline *ngFor="let movie of movies">
         <button icon-right ion-button outline full round color="secondary">
-                <b> {{movie.Title}} </b>
+                <b> {{movie.title}} </b>
                 <ion-icon name="arrow-round-forward"></ion-icon>
         </button>
         <ion-row>
-            <ion-col>Start: {{movie.StartTime | date:'shortTime'}}</ion-col>
-            <ion-col>End: {{movie.EndTime | date:'shortTime'}}</ion-col>
+            <ion-col>Start: {{movie.startTime | date:'shortTime'}}</ion-col>
+            <ion-col>End: {{movie.endTime | date:'shortTime'}}</ion-col>
         </ion-row>
     </ion-card>
 </ion-content>

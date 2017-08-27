@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { LoadingController , NavController } from 'ionic-angular';
+
 
 import { MovieListPage  } from '../pages';
+import { ChannelApi  } from '../../shared/shared';
+
 
 
 @Component({
@@ -11,14 +14,36 @@ import { MovieListPage  } from '../pages';
 export class ChannelPage {
 
 
-  channels = [
-    { sigla: 'rtp1', name: 'RTP 1' },
-    { sigla: 'rtp2', name: 'RTP 2' },
-    { sigla: 'sic', name: 'SIC' },
-    { sigla: 'tvi', name: 'TVI' }    
-  ];
+  channels: any;
+  constructor(
+    private nav: NavController , 
+    private channelApi: ChannelApi,
+    private load: LoadingController) {
 
-  constructor(private nav: NavController) {
+    
+  }
+
+  ionViewDidLoad(){
+   
+    let loader = this.load.create({
+      content: '<b> Loading Channels... </b>'
+    });
+    
+    loader.present().then(() =>{
+      if(this.channels == undefined){
+
+        this.channelApi.getChannels()
+        .then(data => this.channels = data)
+        .then(x => loader.dismiss())
+        .catch(x => {loader.dismiss(); console.log(x)});
+
+      }
+      else
+      {
+        loader.dismiss();
+      }
+
+    });
 
   }
 
