@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { ListPage } from '../pages/list/list';
-import { Http, HttpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { ChannelApi } from  '../shared/shared';
 import { ChannelPage ,HomePage , MovieDetailsPage , MovieListPage } from '../pages/pages';

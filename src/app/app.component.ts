@@ -3,9 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-
-import { ListPage } from '../pages/list/list';
-import { ChannelPage , HomePage , MovieDetailsPage , MovieListPage } from '../pages/pages'
+import { ChannelPage , HomePage  } from '../pages/pages'
 
 @Component({
   templateUrl: 'app.html'

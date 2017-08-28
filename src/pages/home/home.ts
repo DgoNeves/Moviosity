@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ChannelPage  , MovieDetailsPage , MovieListPage } from '../pages';
+import { ChannelPage } from '../pages';
 
 @Component({
   selector: 'page-home',
